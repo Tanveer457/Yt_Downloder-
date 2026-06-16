@@ -21,3 +21,7 @@ download_log_*.json
 # OS files
 .DS_Store
 Thumbs.db
+
+# Documentation drafts
+ai_downloader_ideas.md
+
