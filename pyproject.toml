@@ -1,0 +1,13 @@
+[project]
+name = "mpi-video-downloader"
+version = "0.1.0"
+description = "This is youtube/vemo video downloader app that download long videos / shorts from here "
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "mpi4py>=4.1.1",
+    "streamlit>=1.51.0",
+    "yt-dlp>=2023.0.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+]

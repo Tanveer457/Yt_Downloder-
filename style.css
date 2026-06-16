@@ -1,0 +1,250 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+/* ==================== GLOBAL FONTS & STYLES ==================== */
+* {
+    font-family: 'Outfit', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+body {
+    background: #0c0e17;
+}
+
+/* ==================== METRIC GLASS CARDS ==================== */
+[data-testid="stMetricValue"] {
+    font-size: 2.2rem;
+    font-weight: 700;
+    background: linear-gradient(90deg, #fafbfc 0%, #ff4b4b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+[data-testid="stMetricLabel"] {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: rgba(250, 251, 252, 0.7) !important;
+}
+
+/* ==================== CONTAINER BLOCKS ==================== */
+/* Streamlit columns/containers default block styles */
+div[data-testid="stVerticalBlock"] > div {
+    background: rgba(22, 27, 38, 0.45);
+    padding: 1.5rem;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    margin-bottom: 1rem;
+    backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+div[data-testid="stVerticalBlock"] > div:hover {
+    border-color: rgba(255, 75, 75, 0.25);
+    box-shadow: 0 10px 30px rgba(255, 75, 75, 0.08);
+    transform: translateY(-2px);
+}
+
+/* ==================== BUTTONS ==================== */
+div.stButton > button {
+    background: linear-gradient(90deg, #ff4b4b 0%, #ff784b 100%);
+    color: #ffffff !important;
+    border: none;
+    padding: 0.65rem 1.25rem;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 15px rgba(255, 75, 75, 0.15);
+}
+
+div.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 75, 75, 0.3);
+    border: none !important;
+}
+
+div.stButton > button:active {
+    transform: translateY(0);
+}
+
+div.stButton > button[disabled] {
+    background: #1d2230 !important;
+    color: rgba(255, 255, 255, 0.3) !important;
+    cursor: not-allowed;
+    opacity: 0.6;
+    box-shadow: none;
+    transform: none !important;
+}
+
+/* Primary Button Styling */
+div.stButton > button[kind="primary"] {
+    background: linear-gradient(90deg, #ff4b4b 0%, #ff2525 100%);
+    box-shadow: 0 4px 15px rgba(255, 75, 75, 0.25);
+}
+
+/* ==================== FORM INPUTS ==================== */
+textarea, input[type="text"], input[type="number"] {
+    background-color: #121622 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+    color: #fafbfc !important;
+    transition: all 0.25s ease !important;
+}
+
+textarea:focus, input[type="text"]:focus, input[type="number"]:focus {
+    border-color: #ff4b4b !important;
+    box-shadow: 0 0 10px rgba(255, 75, 75, 0.15) !important;
+}
+
+/* ==================== SELECTBOX & DROPDOWNS ==================== */
+/* Dropdown style overrides to prevent black-on-black text */
+[data-baseweb="select"] {
+    background-color: #121622 !important;
+    border-radius: 10px !important;
+}
+
+[data-baseweb="select"] > div {
+    background-color: #121622 !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+}
+
+/* Hover style */
+[data-baseweb="select"]:hover > div {
+    border-color: #ff4b4b !important;
+}
+
+/* Dropdown list */
+[role="listbox"] {
+    background-color: #161b26 !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
+    border-radius: 10px !important;
+}
+
+[role="option"] {
+    background-color: transparent !important;
+    color: #fafbfc !important;
+    transition: background-color 0.2s ease;
+}
+
+[role="option"]:hover, [role="option"][aria-selected="true"] {
+    background-color: rgba(255, 75, 75, 0.15) !important;
+    color: #ff4b4b !important;
+}
+
+/* ==================== TABS ==================== */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 8px;
+    background-color: transparent;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.05);
+    padding-bottom: 4px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    background: transparent;
+    border-radius: 10px 10px 0 0;
+    padding: 10px 20px;
+    color: rgba(250, 251, 252, 0.6) !important;
+    border: none;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: #ff4b4b !important;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.stTabs [aria-selected="true"] {
+    color: #ff4b4b !important;
+    background: transparent !important;
+    border-bottom: 3px solid #ff4b4b !important;
+}
+
+.stTabs [data-baseweb="tab-panel"] {
+    background: transparent;
+    padding: 1.5rem 0;
+}
+
+/* ==================== PROGRESS BARS ==================== */
+.stProgress > div > div > div > div {
+    background: linear-gradient(90deg, #ff4b4b 0%, #ff8c4b 100%);
+    border-radius: 8px;
+}
+
+.stProgress > div > div > div {
+    background-color: #121622;
+    border-radius: 8px;
+    height: 8px;
+}
+
+/* ==================== FILE UPLOADER ==================== */
+[data-testid="stFileUploader"] {
+    background: rgba(22, 27, 38, 0.3) !important;
+    border: 2px dashed rgba(255, 255, 255, 0.1) !important;
+    border-radius: 12px !important;
+    padding: 1rem !important;
+    transition: all 0.3s ease;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: rgba(255, 75, 75, 0.4) !important;
+    background: rgba(22, 27, 38, 0.5) !important;
+}
+
+/* ==================== SLIDER ==================== */
+[data-baseweb="slider"] [data-testid="stThumbValue"] {
+    background: linear-gradient(90deg, #ff4b4b 0%, #ff784b 100%);
+    color: #ffffff;
+    font-weight: 600;
+    border-radius: 6px;
+    padding: 2px 6px;
+}
+
+/* ==================== SCROLLBAR ==================== */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0c0e17;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 75, 75, 0.4);
+}
+
+/* ==================== VIDEO PLAYERS ==================== */
+video {
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+/* ==================== HEADINGS ==================== */
+h1 {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
+
+h2, h3, h4 {
+    font-weight: 700;
+    letter-spacing: -0.2px;
+}
+
+/* ==================== ALERTS ==================== */
+.stAlert {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+    background-color: rgba(22, 27, 38, 0.6) !important;
+}
+
+/* Adjust warning, success, error borders if custom ones exist */
+div[data-baseweb="notification"] {
+    border-radius: 12px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05) !important;
+}

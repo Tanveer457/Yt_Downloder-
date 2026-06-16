@@ -1,0 +1,23 @@
+# Python-generated files
+__pycache__/
+*.py[oc]
+build/
+dist/
+wheels/
+*.egg-info
+
+# Virtual environments
+.venv/
+env/
+
+# App-specific temporary files and data
+downloads/
+config.json
+*.tmp
+*.flag
+status_rank_*.json
+download_log_*.json
+
+# OS files
+.DS_Store
+Thumbs.db
