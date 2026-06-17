@@ -1,5 +1,5 @@
 <div align="center">
-  <a href="https://github.com/YOUR_USERNAME/mpi-video-downloader">
+  <a href="https://github.com/Tanveer457/Yt_Downloder-">
     <img src="https://readme-typing-svg.herokuapp.com?font=Outfit&weight=800&size=45&pause=1000&color=FF4B4B&center=true&vCenter=true&width=800&height=120&lines=MPI+Video+Downloader+Pro;True+Parallel+Video+Downloading;Built+with+Streamlit+%26+yt-dlp" alt="Animated Header" />
   </a>
 
@@ -65,8 +65,8 @@ pip install uv
 
 **2. Clone the repository:**
 ```bash
-git clone https://github.com/YOUR_USERNAME/mpi-video-downloader.git
-cd mpi-video-downloader
+git clone https://github.com/Tanveer457/Yt_Downloder-.git
+cd Yt_Downloder-
 ```
 
 **3. Install Dependencies:**
