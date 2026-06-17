@@ -105,37 +105,42 @@ The dashboard will launch a background `mpiexec` process and render real-time pr
 This project features a decoupled architecture where a sleek Streamlit frontend seamlessly manages a high-performance MPI backend.
 
 ```mermaid
-flowchart TD
-    subgraph UI ["🖥️ Frontend (Streamlit)"]
-        App["app.py"]
-        UserInput["User Input: URLs & Settings"] --> App
-        App -- "Writes" --> Config[("config.json")]
-        App -- "Spawns subprocess" --> MPIExec["mpiexec"]
-        App -. "Reads (Live Polling)" .-> Status[("status_rank_*.json")]
-        App -- "Controls" --> PauseFlag[("pause.flag")]
-    end
-
-    subgraph Backend ["⚙️ Backend (MPI + yt-dlp)"]
-        MPIExec --> |Rank 0| Master["Master Node (Rank 0)"]
-        MPIExec --> |Ranks 1..N| Workers["Worker Nodes"]
-        
-        Master -- "Reads" --> Config
-        
-        Master -- "Assigns URL (comm.send)" --> Workers
-        Workers -- "Done Signal (comm.recv)" --> Master
-        
-        Master -- "Downloads" --> YTDLP1["yt-dlp"]
-        Workers -- "Downloads" --> YTDLP2["yt-dlp"]
-        
-        Master -- "Writes Atomically" --> Status
-        Workers -- "Writes Atomically" --> Status
-        
-        Master -. "Checks" .-> PauseFlag
-        Workers -. "Checks" .-> PauseFlag
+flowchart LR
+    %% Components
+    App["🖥️ Streamlit App"]
+    
+    subgraph Files ["📁 Data Exchange"]
+        Config[("config.json")]
+        Status[("status_*.json")]
     end
     
-    YTDLP1 --> |Saves MP4/M4A| Disk[("Local Storage")]
-    YTDLP2 --> |Saves MP4/M4A| Disk
+    subgraph MPI ["⚙️ MPI Backend (yt-dlp)"]
+        Master["Master (Rank 0)"]
+        Workers["Workers (Rank 1-N)"]
+    end
+    
+    Disk[("💾 Local Storage")]
+
+    %% Flow
+    App -- "Writes Config" --> Config
+    Config --> Master
+    Master <-->|"Assign URLs & Sync"| Workers
+    
+    Master -->|"Downloads"| Disk
+    Workers -->|"Downloads"| Disk
+    
+    Master -- "Update Progress" --> Status
+    Workers -- "Update Progress" --> Status
+    
+    Status -. "Live UI Polling" .-> App
+
+    %% Styling
+    style App fill:#FF4B4B,stroke:#fff,stroke-width:2px,color:#fff
+    style Config fill:#FFD166,stroke:#333,stroke-width:2px,color:#000
+    style Status fill:#FFD166,stroke:#333,stroke-width:2px,color:#000
+    style Master fill:#06D6A0,stroke:#333,stroke-width:2px,color:#000
+    style Workers fill:#118AB2,stroke:#fff,stroke-width:2px,color:#fff
+    style Disk fill:#EF476F,stroke:#fff,stroke-width:2px,color:#fff
 ```
 
 This project avoids common multi-processing race conditions by using a strict **Master-Worker** pattern via MPI point-to-point communication (`send`/`recv`):
